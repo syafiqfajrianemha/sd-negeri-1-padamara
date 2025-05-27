@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Fasilitas;
 use App\Models\ProgramPaguyubanKomite;
 use App\Models\ProgramUnggulan;
+use App\Models\Sejarah;
 use App\Models\Struktural;
 use App\Models\StrukturalKomite;
 use App\Models\StrukturOrganisasi;
@@ -23,5 +24,11 @@ class ProfilController extends Controller
     {
         $struktur = StrukturOrganisasi::latest()->get();
         return view('user.tentang-kami.struktur.index', compact('struktur'));
+    }
+
+    public function sejarah()
+    {
+        $sejarah = Sejarah::latest()->get();
+        return view('user.tentang-kami.sejarah.index', compact('sejarah'));
     }
 }

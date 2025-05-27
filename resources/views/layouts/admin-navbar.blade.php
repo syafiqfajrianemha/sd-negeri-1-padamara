@@ -43,6 +43,20 @@
         </a>
     </li>
 
+    <li class="nav-item{{ Request::routeIs('sejarah.index', 'sejarah.*') ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('sejarah.index') }}">
+            <i class="fas fa-fw fa-bullseye"></i>
+            <span>Sejarah</span>
+        </a>
+    </li>
+
+    <li class="nav-item{{ Request::routeIs('guru.index', 'guru.*') ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('guru.index') }}">
+            <i class="fas fa-fw fa-bullseye"></i>
+            <span>Guru</span>
+        </a>
+    </li>
+
     <li class="nav-item{{ Request::routeIs('struktur.index', 'struktur.*') ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('struktur.index') }}">
             <i class="fas fa-fw fa-user-tie"></i>

@@ -25,22 +25,25 @@
             <nav id="navmenu" class="navmenu">
                 <ul>
                     <li><a href="{{ route('home') }}" class="{{ Request::routeIs('home') ? 'active' : '' }}">Home</a></li>
-                    <li class="dropdown"><a href="" class="{{ Request::routeIs('guest.tentang-kami.visi-dan-misi') ? 'active' : '' }}"><span>Tentang Kami</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                    <li class="dropdown"><a href="" class="{{ Request::routeIs('guest.tentang-kami.visi-dan-misi', 'guest.tentang-kami.sejarah', 'guest.tentang-kami.struktur-organisasi') ? 'active' : '' }}"><span>Tentang Kami</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
                             <li><a href="{{ route('guest.tentang-kami.visi-dan-misi') }}">Visi dan Misi</a></li>
-                            <li><a href="">Sejarah</a></li>
+                            <li><a href="{{ route('guest.tentang-kami.sejarah') }}">Sejarah</a></li>
                             <li><a href="{{ route('guest.tentang-kami.struktur-organisasi') }}">Struktur Organisasi</a></li>
-                            <li><a href="">Guru</a></li>
                         </ul>
                     </li>
-                    <li><a href="{{ route('guest.ekskul') }}" class="{{ Request::routeIs('guest.ekskul') ? 'active' : '' }}">Ekstrakurikuler</a></li>
-                    <li><a href="{{ route('guest.prestasi') }}" class="{{ Request::routeIs('guest.prestasi') ? 'active' : '' }}">Prestasi</a></li>
-                    <li><a href="{{ route('guest.berita') }}" class="{{ Request::routeIs('guest.berita') ? 'active' : '' }}">Kegiatan</a></li>
+                    <li><a href="{{ route('guest.guru') }}" class="{{ Request::routeIs('guest.guru') ? 'active' : '' }}">Guru</a></li>
+                    <li class="dropdown"><a href="" class="{{ Request::routeIs('guest.ekskul', 'guest.prestasi') ? 'active' : '' }}"><span>Siswa</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <ul>
+                            <li><a href="{{ route('guest.ekskul') }}">Ekstrakurikuler</a></li>
+                            <li><a href="{{ route('guest.prestasi') }}">Prestasi</a></li>
+                        </ul>
+                    </li>
                     <li><a href="{{ route('guest.berita') }}" class="{{ Request::routeIs('guest.berita') ? 'active' : '' }}">Berita</a></li>
-                    <li><a href="{{ route('login') }}" class="text-primary">LOGIN</a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
+            <a href="{{ route('login') }}" class="text-uppercase btn btn-primary">LOGIN</a>
         </div>
     </div>
 </header>

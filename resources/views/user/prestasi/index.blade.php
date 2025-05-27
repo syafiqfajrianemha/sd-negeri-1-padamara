@@ -3,45 +3,41 @@
 @section('title', 'Prestasi')
 
 @section('content')
-<section class="jumbotron text-white text-center d-flex align-items-center"
-    style="background-image: url('{{ asset('images/bg.jpg') }}'); background-size: cover; background-position: center; height: 100vh;">
-    <div class="container">
-        <h1 class="display-4 fw-bold">
-            Prestasi
-            <br>
-            SD Islam Terpadu Annida Sokaraja
-        </h1>
+<div class="page-title" data-aos="fade">
+    <div class="container d-lg-flex justify-content-center align-items-center">
+        <h1 class="mb-2 mb-lg-0">Prestasi</h1>
     </div>
-</section>
+</div>
 
-<section>
-    <div class="container section-title mb-0" data-aos="fade-up">
-        <span>Prestasi<br></span>
-        <h2>Prestasi</h2>
-    </div>
-
+<section class="team section">
     <div class="container">
         <div class="row gy-4">
-            @forelse ($prestasi as $item)
-                <div class="col-12" data-aos="fade-up" data-aos-delay="100">
-                    <a href="{{ route('guest.prestasi.detail', $item->id) }}">
-                        <div class="card flex-md-row border-0 shadow">
-                            <div class="col-md-4">
-                                <img src="{{ asset('storage/' . $item->foto) }}" class="img-fluid rounded h-100 w-100 object-fit-cover"
-                                    alt="Foto" style="max-height: 250px; object-fit: cover;">
-                            </div>
-                            <div class="card-body d-flex flex-column justify-content-center col-md-8">
-                                <h3 class="h3">{{ $item->judul }}</h3>
-                                <p class="card-text text-justify" style="text-align: justify;">
-                                    {!! nl2br($item->isi) !!}
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            @empty
-                <p class="text-center text-danger">Belum ada data prestasi.</p>
-            @endforelse
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Lomba</th>
+                        <th scope="col">Nama Siswa</th>
+                        <th scope="col">Juara</th>
+                        <th scope="col">Kelas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse ($prestasi as $item)
+                        <tr>
+                            <th scope="row">{{ $loop->iteration }}</th>
+                            <td>{{ $item->nama_lomba }}</td>
+                            <td>{{ $item->nama_siswa }}</td>
+                            <td>{{ $item->juara }}</td>
+                            <td>{{ $item->kelas }}</td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="5" class="text-danger text-center">Belum Ada Prestasi.</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
         </div>
     </div>
 </section>

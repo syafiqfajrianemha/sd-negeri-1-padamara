@@ -4,11 +4,13 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EkskulController;
+use App\Http\Controllers\GuruController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ManajemenAkunController;
 use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\SambutanKepalaSekolahController;
+use App\Http\Controllers\SejarahController;
 use App\Http\Controllers\StrukturOrganisasiController;
 use App\Http\Controllers\VisiMisiController;
 use Illuminate\Support\Facades\Route;
@@ -19,7 +21,10 @@ Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.check');
 
 Route::get('/visi-dan-misi', [ProfilController::class, 'visimisi'])->name('guest.tentang-kami.visi-dan-misi');
+Route::get('/sejarah', [ProfilController::class, 'sejarah'])->name('guest.tentang-kami.sejarah');
 Route::get('/struktur-organisasi', [ProfilController::class, 'strukturorganisasi'])->name('guest.tentang-kami.struktur-organisasi');
+
+Route::get('/guru', [GuruController::class, 'guest'])->name('guest.guru');
 
 Route::get('/ekstrakulikuler', [EkskulController::class, 'guest'])->name('guest.ekskul');
 
@@ -36,6 +41,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('/admin/prestasi', PrestasiController::class);
     Route::resource('/admin/berita', BeritaController::class);
     Route::resource('/admin/visi-misi', VisiMisiController::class);
+    Route::resource('/admin/sejarah', SejarahController::class);
+    Route::resource('/admin/guru', GuruController::class);
     Route::resource('/admin/ekskul', EkskulController::class);
     Route::resource('/admin/struktur', StrukturOrganisasiController::class);
 

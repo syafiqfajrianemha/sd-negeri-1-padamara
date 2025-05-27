@@ -31,14 +31,11 @@ class PrestasiController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'judul' => 'required',
-            'foto' => 'required|image|max:2048',
-            'isi' => 'required',
+            'nama_lomba' => 'required',
+            'nama_siswa' => 'required',
+            'juara' => 'required',
+            'kelas' => 'required',
         ]);
-
-        if ($request->hasFile('foto')) {
-            $data['foto'] = $request->file('foto')->store('images', 'public');
-        }
 
         Prestasi::create($data);
 
@@ -70,19 +67,13 @@ class PrestasiController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->validate([
-            'judul' => 'required',
-            'foto' => 'nullable|image|max:2048',
-            'isi' => 'required',
+            'nama_lomba' => 'required',
+            'nama_siswa' => 'required',
+            'juara' => 'required',
+            'kelas' => 'required',
         ]);
 
         $prestasi = Prestasi::findOrFail($id);
-
-        if ($request->hasFile('foto')) {
-            if ($prestasi->foto) {
-                Storage::disk('public')->delete($prestasi->foto);
-            }
-            $data['foto'] = $request->file('foto')->store('images', 'public');
-        }
 
         $prestasi->update($data);
 
@@ -95,9 +86,6 @@ class PrestasiController extends Controller
     public function destroy($id)
     {
         $prestasi = Prestasi::findOrFail($id);
-        if ($prestasi->foto) {
-            Storage::disk('public')->delete($prestasi->foto);
-        }
         $prestasi->delete();
         return redirect()->route('prestasi.index')->with('message', 'Prestasi berhasil dihapus');
     }
